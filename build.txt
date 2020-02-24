@@ -1,0 +1,15 @@
+http endpoints:
+
+get / -> lists all the tweets
+
+get /tweet-> form to tweet
+
+post / -> new tweet sent here
+
+
+table:
+
+username - text | tweet - text 240 char max | date |
+
+
+
