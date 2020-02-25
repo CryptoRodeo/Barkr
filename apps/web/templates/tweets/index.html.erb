@@ -1,9 +1,13 @@
 <h2>All Tweets</h2>
 
+<% if tweets.any? %>
+
 <div id="tweets">
+
+<% tweets.each do |tweet| %>
   <div class="tweet">
-    <h3>Doggo</h3>
-    <p>I love beef jerky!</p>
+    <h3>tweet.username</h3>
+    <p>tweet.tweet<p>
   </div>
 
   <div class="tweet">

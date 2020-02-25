@@ -4,7 +4,7 @@ Hanami::Model.migration do
       primary_key :id
 
       column :username, String, null: false
-      column :tweet, String, null:false , size: 240
+      column :content, String, null:false , size: 240
 
       column :created_at, DateTime, null: false
       column :updated_at, DateTime, null: false
