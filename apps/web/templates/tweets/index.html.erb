@@ -1,18 +1,18 @@
 <h2>All Tweets</h2>
-
+  <a href="/tweets/new">Tweet</a>
 <% if tweets.any? %>
 
 <div id="tweets">
 
-<% tweets.each do |tweet| %>
-  <div class="tweet">
-    <h3>tweet.username</h3>
-    <p>tweet.tweet<p>
+    <% tweets.each do |tweet| %>
+    <div class="tweet">
+    <h3><%= tweet.username %></h3>
+    <p><%= tweet.content %><p>
+    </div>
+  <% end%>
   </div>
+<% else %>  
+  <p class='placeholder'>Be the first to tweet on Barkr!</p>
+  <%end %>
 
-  <div class="tweet">
-    <h3>Doggo</h3>
-    <p>I dont care what they say, peeing on everything is fun!</p>
-  </div>
-</div>
 

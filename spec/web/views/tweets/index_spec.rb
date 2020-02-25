@@ -4,19 +4,20 @@ RSpec.describe Web::Views::Tweets::Index, type: :view do
   let(:view)      { described_class.new(template, exposures) }
   let(:rendered)  { view.render }
 
-  it 'exposes #format' do
-    expect(view.tweets).to eq exposures.fetch(:tweets)
+  it 'exposes #tweets' do
+    expect(view.tweets).to eq(exposures.fetch(:tweets))
   end
 
-  context 'When there are not tweets' do
+  context 'When there are no tweets' do
     it 'shows a placeholder' do
       expect(rendered).to include ("<p class='placeholder'>Be the first to tweet on Barkr!</p>")
     end
+  end
 
     context 'When there are tweets' do
-      let (:tweet1)    { Tweet.new(username: 'Fido', tweet: 'Scooby doo is overrated') }
-      let (:tweet2)    { Tweet.new(username: 'Scooby', tweet: 'I dont even know who this Fido guy is!') }
-      let (:exposes) { Hash[tweets: [tweet1, tweet2 ] ] }
+      let(:tweet1)    { Tweet.new(username: 'Fido', content: "Scooby doo is overrated") }
+      let(:tweet2)    { Tweet.new(username: 'Scooby', content: 'I dont even know who this Fido guy is!') }
+      let(:exposures) { Hash[tweets: [tweet1, tweet2 ] ] }
 
       it 'lists them all' do
         expect(rendered.scan(/class="tweet"/).length).to eq(2)
@@ -24,8 +25,8 @@ RSpec.describe Web::Views::Tweets::Index, type: :view do
         expect(rendered).to include("I dont even know who this Fido guy is!")
       end
 
-      it 'Hides the place holder message' do 
+      it 'hides the place holder message' do 
         expect(rendered).to_not include("<p class='placeholder'>Be the first to tweet on Barkr!</p>")
-      end
     end
+  end
 end

@@ -5,8 +5,8 @@ RSpec.describe 'lists tweets' do
   before do
     repository.clear
 
-    repository.create(username: 'Doggo', tweet: 'Hungry for snacks...')
-    repository.create(username: 'Fido', tweet: 'Just found out im adopted!')
+    repository.create(username: 'Doggo', content: 'Hungry for snacks...')
+    repository.create(username: 'Fido', content: 'Just found out im adopted!')
   end
 
   it 'Displays the tweets on the page' do
@@ -15,7 +15,7 @@ RSpec.describe 'lists tweets' do
     #within an element with the id of tweets
     within '#tweets' do
       #expect to find two elements with the class of tweet
-      expect(page).to have_css('.tweet', count:2)
+      expect(page).to have_selector('.tweet', count:2)
     end
   end
 end
