@@ -1,0 +1,26 @@
+<h2>Tweet!</h2>
+
+<%=
+
+  form_for :tweet, '/tweets' do
+    div class: 'input' do
+      label :username
+      text_field :username
+    end
+
+
+    div class: 'input' do
+      label :content
+      text_field :content
+    end
+
+    div class: 'controls' do
+      submit 'Tweet'
+    end
+  end
+  
+  
+  
+  
+  
+%>
