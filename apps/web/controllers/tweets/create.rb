@@ -19,7 +19,7 @@ module Web
           if params.valid?
             @tweet = TweetRepository.new.create(params[:tweet])
 
-            redirect_to routes.books_path
+            redirect_to routes.tweets_path
           else
             self.status = 422 #set to 422, pass control to view.
           end

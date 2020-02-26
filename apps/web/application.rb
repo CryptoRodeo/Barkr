@@ -7,6 +7,7 @@ module Web
       ##
       # BASIC
       #
+      
 
       # Define the root path of this application.
       # All paths specified in this configuration are relative to path below.

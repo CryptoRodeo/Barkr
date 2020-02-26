@@ -5,7 +5,7 @@ RSpec.describe 'Add a tweet' do
     TweetRepository.new.clear
   end
 
-  it 'displas a list of errors when params contains errors' do
+  it 'displays a list of errors when params contains errors' do
     visit '/tweets/new'
 
     within 'form#tweet-form' do

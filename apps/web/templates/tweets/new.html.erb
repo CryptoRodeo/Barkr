@@ -2,7 +2,7 @@
 
 <%=
 
-  form_for :tweet, routes.books_path do
+  form_for :tweet, routes.tweets_path do
     div class: 'input' do
       label :username
       text_field :username
@@ -15,7 +15,7 @@
     end
 
     div class: 'controls' do
-      submit 'Tweet'
+      submit 'Tweet', class: 'button-primary'
     end
   end
   
