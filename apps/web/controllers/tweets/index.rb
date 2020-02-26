@@ -8,7 +8,6 @@ module Web
 
         def call(params)
           @tweets = TweetRepository.new.all
-          puts "#{@tweets.class}"
         end
       end
     end

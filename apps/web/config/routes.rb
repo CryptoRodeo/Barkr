@@ -7,7 +7,5 @@
 
 root to: 'home#index'
 
-
-get '/tweets', to: 'tweets#index'
-get '/tweets/new', to: 'tweets#new'
-post '/tweets', to: 'tweets#create'
+#resources: helper function to create REST style routes.
+resources :tweets, only: [:index, :new, :create]

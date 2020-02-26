@@ -5,18 +5,18 @@ RSpec.describe 'Add a tweet' do
     TweetRepository.new.clear
   end
 
-  it 'can create a new tweet' do
+  it 'displas a list of errors when params contains errors' do
     visit '/tweets/new'
 
     within 'form#tweet-form' do
-      fill_in 'Username', with: 'Demo Doggo'
-      fill_in 'Content', with: 'Woof'
-
       click_button 'Tweet'
     end
 
+    expect(current_path).to eq('/tweets')
 
-    expect(page).to have_current_path('/tweets')
-    expect(page).to have_content('Demo Doggo')
+
+    expect(page).to have_content('There was a problem with your tweet')
+    expect(page).to have_content('Username must be filled')
+    expect(page).to have_content('Content must be filled')
   end
 end

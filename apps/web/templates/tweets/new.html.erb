@@ -2,7 +2,7 @@
 
 <%=
 
-  form_for :tweet, '/tweets' do
+  form_for :tweet, routes.books_path do
     div class: 'input' do
       label :username
       text_field :username
@@ -19,8 +19,15 @@
     end
   end
   
-  
-  
-  
-  
 %>
+
+<% unless params.valid? %>
+  <div class="errors">
+    <h3>There was a problem with your tweet</h3>
+    <ul>
+      <% params.error_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>    
+  </div>
+<% end %>
