@@ -26,5 +26,5 @@
 - [ ] listen for form inputs
 
 ## Back-end
-- [ ] Use UUID instead of int
+- [x] Use UUID instead of int
 - [ ] From data is created and posted on the index page
