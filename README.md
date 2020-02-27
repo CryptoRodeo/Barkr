@@ -24,7 +24,7 @@
 - [x] Style the elements
 - [ ] hide the form
 - [ ] listen for form inputs
-- [ ] create the basic interface for the app
+- [x] create the basic interface for the app
 
 ## Back-end
 - [x] Use UUID instead of int
