@@ -33,16 +33,19 @@ div.tweet
 
 form
 {
-    border: solid 1px #bdbdbd;
-    border-radius: 10px;
     width: 33%;
     padding: 15px;
-    align-self: center;
+    text-align: left;
 }
 
 form input
 {
-    width: 50%;
+    width: 100%;
 }
 
+form textarea
+{
+    width: 100%
+    
+}
 
