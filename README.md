@@ -25,8 +25,10 @@
 - [ ] hide the form
 - [ ] listen for form inputs
 - [x] create the basic interface for the app
+- [ ] Hookup the front end interface to Vue.js
 
 ## Back-end
 - [x] Use UUID instead of int
 - [x] Form data is created and posted on the index page
+- [x] Send data from the backend wrapped as json.
 - [ ] use ROM instead of hanami-model
