@@ -6,13 +6,13 @@
   form_for :tweet, '/tweets' do
     div class: 'input' do
       label :username
-      text_field :username
+      text_field :username, placeholder: 'Pawtrick 🐾'
     end
 
 
     div class: 'input' do
       label :content
-      text_area :content
+      text_area :content, placeholder: "Remember, be nice!"
     end
 
     div class: 'controls' do
