@@ -1,4 +1,5 @@
 # Configure your routes here
+#
 # See: https://guides.hanamirb.org/routing/overview
 #
 # Example:
@@ -7,4 +8,8 @@
 
 root to: 'tweets#index'
 #resources: helper function to create REST style routes.
-resources :tweets, only: [:index, :new, :create]
+#resources :tweets, only: [:index, :new, :create]
+
+get '/tweets', to: 'tweets#index'
+#get '/tweets/new', to: 'tweets#new'
+post '/tweets', to: 'tweets#create'

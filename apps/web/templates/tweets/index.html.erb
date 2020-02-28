@@ -1,5 +1,39 @@
 <h2>All Tweets</h2>
-  <a href="/tweets/new">Tweet</a>
+<h2>Got a 🦴 to pick? Tweet away!</h2>
+
+<%=
+
+  form_for :tweet, '/tweets' do
+    div class: 'input' do
+      label :username
+      text_field :username
+    end
+
+
+    div class: 'input' do
+      label :content
+      text_field :content
+    end
+
+    div class: 'controls' do
+      submit 'Send Bark 🐕', class: 'button-primary'
+    end
+  end
+  
+%>
+
+<% unless params.valid? %>
+  <div class="errors">
+    <h3>There was a problem with your tweet</h3>
+    <ul>
+      <% params.error_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>    
+  </div>
+<% end %>
+
+<!--   <a href="/tweets/new">Tweet</a> -->
 <% if tweets.any? %>
 
 <div id="tweets">

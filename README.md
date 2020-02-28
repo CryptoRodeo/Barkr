@@ -28,5 +28,5 @@
 
 ## Back-end
 - [x] Use UUID instead of int
-- [ ] Form data is created and posted on the index page
+- [x] Form data is created and posted on the index page
 - [ ] use ROM instead of hanami-model
