@@ -16,7 +16,9 @@ module Web
           end
 
           puts response
-
+         
+          self.status = 201 
+          self.headers.merge!({'Access-Control-Allow-Origin' => '*'}) #allow cross origin resource sharing.
           self.body = JSON.generate(response)
 
         end
