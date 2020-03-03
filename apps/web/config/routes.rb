@@ -12,5 +12,7 @@ root to: 'tweets#index'
 
 get '/tweets', to: 'tweets#index'
 get '/tweets/api', to: 'tweets#api'
+get '/tweets/:id', to: 'tweets#read'
 #get '/tweets/new', to: 'tweets#new'
 post '/tweets', to: 'tweets#create'
+
