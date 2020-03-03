@@ -11,5 +11,6 @@ root to: 'tweets#index'
 #resources :tweets, only: [:index, :new, :create]
 
 get '/tweets', to: 'tweets#index'
+get '/tweets/api', to: 'tweets#api'
 #get '/tweets/new', to: 'tweets#new'
 post '/tweets', to: 'tweets#create'
