@@ -22,13 +22,23 @@
 
 ## Front-end
 - [x] Style the elements
-- [ ] hide the form
-- [ ] listen for form inputs
 - [x] create the basic interface for the app
-- [ ] Hookup the front end interface to Vue.js
 
 ## Back-end
 - [x] Use UUID instead of int
 - [x] Form data is created and posted on the index page
 - [x] Send data from the backend wrapped as json.
-- [ ] use ROM instead of hanami-model
+
+
+## V3 Improvements 🚀
+
+## Front-end
+- [ ] Render the front end in Vue.js
+- [ ] Add a navbar
+- [ ] Add a login form
+-
+## Back-end
+- [ ] Create an admin account
+- [ ] Create user accounts based on ip address
+- [ ] Associate users to their posts based on their ip addresses
+- [ ] Implement a follow feature
