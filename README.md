@@ -28,6 +28,10 @@
 - [x] Use UUID instead of int
 - [x] Form data is created and posted on the index page
 - [x] Send data from the backend wrapped as json.
+- [x] Create Tweet
+- [x] Read Tweet
+- [x] Update Tweet
+- [ ] Destroy Tweet
 
 
 ## V3 Improvements 🚀
