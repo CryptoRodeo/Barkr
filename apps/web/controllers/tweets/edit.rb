@@ -1,14 +1,14 @@
 module Web
     module Controllers
         module Tweets
-            class Read
+            class Edit
                 include Web::Action
                 
-                expose :tweet
+                expose :editable_tweet
 
                 def call(params)
                     tweet_repo = TweetRepository.new
-                    @tweet = tweet_repo.find(params[:id])
+                    @editable_tweet = tweet_repo.find(params[:id])
                 end
             end
         end
