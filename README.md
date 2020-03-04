@@ -40,7 +40,7 @@
 - [ ] Render the front end in Vue.js
 - [ ] Add a navbar
 - [ ] Add a login form
--
+
 ## Back-end
 - [ ] Create an admin account
 - [ ] Create user accounts based on ip address
