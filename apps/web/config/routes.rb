@@ -11,8 +11,10 @@ root to: 'tweets#index'
 get '/tweets', to: 'tweets#index'
 get '/tweets/:id', to: 'tweets#read'
 get '/tweets/:id/edit', to: 'tweets#edit'
+get '/tweets/:id/delete/verify', to: 'tweets#verify'
 
 post '/tweets', to: 'tweets#create'
 patch '/tweets/:id', to: 'tweets#update'
+delete '/tweets/:id', to: 'tweets#delete'
 
 get '/tweets/api', to: 'tweets#api'

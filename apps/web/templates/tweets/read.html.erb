@@ -4,6 +4,11 @@
     <h3><%= tweet.username %></h3>
     <p><%= tweet.content %><p>
     <span><%= tweet.created_at %></span>
+    <div class="controls">
+
+        <a href="/tweets/<%=tweet.id%>/edit"><button class="button-primary_edit">Edit tweet</button></a>
+        <a href="/tweets/<%=tweet.id%>/delete/verify"><button class="button-primary_warning">Delete tweet</button></a>
+    </div>
     </div>
 
 <% else%>

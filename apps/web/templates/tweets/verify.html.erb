@@ -1,0 +1,23 @@
+<h3>Are you sure you want to delete this tweet?</h3>
+<% unless tweet.nil? %>
+
+<div class="tweet">
+    <h3><%= tweet.username %></h3>
+    <p><%= tweet.content %><p>
+    <span><%= tweet.created_at %></span>
+    </div>
+
+<%=
+
+form_for :tweet, "/tweets/#{tweet.id}", method: :delete do
+    div class: 'controls' do
+        submit 'Delete Tweet', class: 'button-primary_warning'
+    end
+end
+%>
+
+<a href="/tweets/<%=tweet.id %>">Go Back</a>
+
+<% else%>
+<p class='placeholder'>Ruh Roh, 404 </p>
+<% end %>

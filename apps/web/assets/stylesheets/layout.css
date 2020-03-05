@@ -49,3 +49,14 @@ form textarea
     
 }
 
+.button-primary_warning
+{
+    background-color: #ff4444;
+    color: #FFF;
+}
+
+.button-primary_edit
+{
+    background-color: #00C851;
+    color: #FFF;
+}
