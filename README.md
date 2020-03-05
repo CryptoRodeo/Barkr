@@ -31,7 +31,7 @@
 - [x] Create Tweet
 - [x] Read Tweet
 - [x] Update Tweet
-- [ ] Destroy Tweet
+- [x] Destroy Tweet
 
 
 ## V3 Improvements 🚀
