@@ -12,12 +12,14 @@ module Web
                 end
 
                 def update_tweet 
-                    unless params[:tweet_edited].nil?
-                        updated = params[:tweet_edited]
-                        @updated_tweet = tweet_repo.update(params[:id], username: updated[:username], content: updated[:content])
-                    else
-                        @updated_tweet = tweet_repo.find(params[:id])
+
+                    unless Hash(params).key? :tweet_edited
+                        raise ("Tweet not found / doesnt exist")
                     end
+
+                    updated = params[:tweet_edited]
+                    updated_tweet = tweet_repo.update(params[:id], username: updated[:username], content: updated[:content])
+                    updated_tweet = tweet_repo.find(params[:id])
                 end
 
                 
