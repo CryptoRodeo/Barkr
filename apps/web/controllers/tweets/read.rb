@@ -10,13 +10,13 @@ module Web
 
                 def initialize(tweet_repo = TweetRepository.new)
                     @tweet_repo ||= tweet_repo
+                    @uuid = {
+                        :v4 => /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
+                    }
                 end
 
                 def UUID(version)
-                    uuid = {
-                        :v4 => /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
-                    }
-                    uuid[version.downcase.to_sym]
+                    @uuid[version.downcase.to_sym]
                 end
                
                 #checks to see if the id retrieved is valid UUID V4
