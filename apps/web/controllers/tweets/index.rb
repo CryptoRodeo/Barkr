@@ -13,7 +13,7 @@ module Web
           @tweets = TweetRepository.new.all
           
           location = URI.open('https://ipapi.co/json/').read
-         @ip = Hash(JSON.parse(loc, :symbolize_names => true))
+         @ip = Hash(JSON.parse(location, :symbolize_names => true))
           
          puts "IP ADDRESS: #{self.ip[:ip]}"
           puts "From Hanami: #{request.ip}" # performance degragating, not recommended.

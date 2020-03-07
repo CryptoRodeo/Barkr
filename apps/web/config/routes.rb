@@ -17,4 +17,4 @@ post '/tweets', to: 'tweets#create'
 patch '/tweets/:id', to: 'tweets#update'
 delete '/tweets/:id', to: 'tweets#delete'
 
-get '/tweets/api', to: 'tweets#api'
+get 'barkr/tweets/api', to: 'tweets#api'

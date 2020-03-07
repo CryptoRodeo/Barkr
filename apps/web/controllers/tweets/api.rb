@@ -4,20 +4,25 @@ module Web
             class Api
                 include Web::Action
                 require 'json'
+                
+                attr_accessor :tweets, :api
 
-                expose :tweets
+                def initialize(tweets = TweetRepository.new.all)
+                    @tweets ||= tweets
+                    @response = convert_tweets :to_h
+                end
+
+                def api
+                    @api = JSON.generate(@response)
+                end
+
+                def convert_tweets(format)
+                    @tweets.map(&format) if Array(@tweets).respond_to?(format)
+                end
 
                 def call(params)
-                    @tweets = TweetRepository.new.all
-
-                    response = []
-
-                    tweets.each do |t|
-                        response << t.to_h
-                    end
-
                     self.headers.merge!({'Access-Control-Allow_origin' => '*'})
-                    self.body = JSON.generate(response)
+                    self.body = api
                 end
             end
         end
