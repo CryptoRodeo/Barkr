@@ -8,6 +8,7 @@ module Web
                 attr_accessor :tweet, :tweet_repo
                 expose :tweet
 
+
                 def initialize(tweet_repo = TweetRepository.new)
                     @tweet_repo ||= tweet_repo
                     @uuid = {
@@ -26,13 +27,13 @@ module Web
 
                 def find_tweet
                     unless id_valid?
-                        raise ArgumentError, "ID is not valid"
+                        redirect_to '/tweets/'
                     end
                     @tweet = tweet_repo.find(params[:id])
                 end
 
                 def call(params)
-                    @tweet = find_tweet
+                    halt 500 unless find_tweet
                 end
             end
         end
