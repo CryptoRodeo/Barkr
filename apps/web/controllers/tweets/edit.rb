@@ -4,11 +4,16 @@ module Web
             class Edit
                 include Web::Action
                 
-                expose :editable_tweet
+                attr_accessor :tweet_edited, :tweet_repo
+                expose :tweet_edited
+
+                def initialize(tweet_repo = TweetRepository.new)
+                    @tweet_repo ||= tweet_repo
+                end
+
 
                 def call(params)
-                    tweet_repo = TweetRepository.new
-                    @editable_tweet = tweet_repo.find(params[:id])
+                    @tweet_edited = tweet_repo.find(params[:id])
                 end
             end
         end

@@ -8,8 +8,8 @@ module Web
                 
                 def call(params)
                     tweet_repo = TweetRepository.new
-                    unless params[:editable_tweet].nil?
-                        updated = params[:editable_tweet]
+                    unless params[:tweet_edited].nil?
+                        updated = params[:tweet_edited]
                         @updated_tweet = tweet_repo.update(params[:id], username: updated[:username], content: updated[:content])
                     else
                         @updated_tweet = tweet_repo.find(params[:id])

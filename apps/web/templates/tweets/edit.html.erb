@@ -2,7 +2,7 @@
 
 <%= 
 
-    form_for :editable_tweet, "/tweets/#{editable_tweet.id}", method: :patch, values: {editable_tweet: editable_tweet} do 
+    form_for :tweet_edited, "/tweets/#{tweet_edited.id}", method: :patch, values: {tweet_edited: tweet_edited} do 
             div class: 'u-full-width' do
                 label :username
                 text_field :username
