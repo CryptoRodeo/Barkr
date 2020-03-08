@@ -12,12 +12,6 @@ module Web
                     @tweet_repo ||= tweet_repo
                 end
 
-                def id_valid?
-                        tweet_repo.find(params[:id])
-                    rescue 
-                        halt 500, "Invalid ID"
-                end
-
                 def find_tweet
                     tweet_repo.find(params[:id])
                 rescue
