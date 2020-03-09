@@ -15,7 +15,8 @@ module Web
         end
 
         def call(params)
-          @user[:ip_address] = params.env["REMOTE_ADDR"]
+          @user[:ip_address] = params.env.fetch("REMOTE_ADDR")
+          puts "#{@user.fetch(:ip_address)}"
         end
       end
     end
