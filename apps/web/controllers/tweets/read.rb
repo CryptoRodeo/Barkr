@@ -4,7 +4,6 @@ module Web
             class Read
                 include Web::Action
 
-                
                 attr_accessor :tweet, :tweet_repo
                 expose :tweet
                 
