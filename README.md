@@ -43,6 +43,6 @@
 
 ## Back-end
 - [ ] Create an admin account
-- [ ] Create user accounts based on ip address
+- [x] Create user accounts based on ip address
 - [ ] Associate users to their posts
 - [ ] Implement a follow feature
