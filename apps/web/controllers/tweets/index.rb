@@ -6,17 +6,21 @@ module Web
         require 'open-uri'
         require 'json'
        
-        attr_accessor :user, :tweets
+        attr_accessor :ip, :tweets
         expose :tweets
         
         def initialize(tweets = TweetRepository.new.all)
-          @user = {}
+          @user_repo = UserRepository.new
           @tweets ||= tweets
         end
 
+        def ip_exists?
+          @user_repo.ip_exists?(@ip)
+        end
+
         def call(params)
-          @user[:ip_address] = params.env.fetch("REMOTE_ADDR")
-          puts "#{@user.fetch(:ip_address)}"
+          @ip = params.env.fetch("REMOTE_ADDR")
+          @user_repo.create(ip: @ip) unless ip_exists?
         end
       end
     end
