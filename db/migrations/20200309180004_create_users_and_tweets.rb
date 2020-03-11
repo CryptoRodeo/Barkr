@@ -12,7 +12,7 @@ Hanami::Model.migration do
     create_table :tweets do
       primary_key :id, 'uuid', null:false, default: Hanami::Model::Sql.function(:uuid_generate_v4)
 
-      foreign_key :created_by, :users, key: :id, type: 'uuid', null: false
+      foreign_key :created_by, :users, key: :id, type: 'uuid', on_delete: :cascade,  null: false
       column :content, String, null:false , size: 240
 
       column :created_at, DateTime, null: false
