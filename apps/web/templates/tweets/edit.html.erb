@@ -3,10 +3,7 @@
 <%= 
 
     form_for :tweet_edited, "/tweets/#{tweet_edited.id}", method: :patch, values: {tweet_edited: tweet_edited} do 
-            div class: 'u-full-width' do
-                label :username
-                text_field :username
-            end
+            
             div class: 'input' do
                 label :content
                 text_area :content, {class: 'u-full-width', width: "800px"}

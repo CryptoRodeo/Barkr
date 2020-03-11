@@ -8,9 +8,9 @@ module Web
 
                 def call(params)
                     tweet_repo = TweetRepository.new
-                    unless params[:id].nil?
-                        @tweet = tweet_repo.find(params[:id])
-                    end
+                   @tweet = tweet_repo.find(params[:id])
+                rescue
+                        halt 500, "Invalid ID"
                 end
             end
         end

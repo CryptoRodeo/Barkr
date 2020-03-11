@@ -3,8 +3,8 @@ module Web
     module Tweets
       class Create
         include Web::Action
-        
-        expose :tweet
+       
+        expose :tweet, :created_by
         
         def initialize(tweet = TweetRepository.new)
           @tweet ||= tweet
@@ -14,14 +14,13 @@ module Web
           # DRY validations for the form inputs.
           params do
             required(:tweet).schema do
-              required(:username).filled(:str?)
               required(:content).filled(:str?)
             end
           end
         end
 
         def create_tweet
-          @tweet.create(params[:tweet])
+          @tweet.create(created_by: @created_by,content: params[:tweet][:content])
         end
 
         def inputs_valid?
@@ -31,6 +30,7 @@ module Web
         def call(params)
           validate_inputs
           if inputs_valid?
+            @created_by = session.fetch(:user_id)
             create_tweet
             redirect_to '/tweets'
           else

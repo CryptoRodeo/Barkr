@@ -1,14 +1,15 @@
 <% unless tweet.nil? %>
 
 <div class="tweet">
-    <h3><%= tweet.username %></h3>
-    <p><%= tweet.content %><p>
-    <span><%= tweet.created_at %></span>
+    <h4><%= tweet.content %></h4>
+    <p>Created by: <%= tweet.created_by%></p>
+    <span>Created at: <%= tweet.created_at %></span>
+    <%if session.fetch(:user_id) == tweet.created_by %>
     <div class="controls">
-
         <a href="/tweets/<%=tweet.id%>/edit"><button class="button-primary_edit">Edit tweet</button></a>
         <a href="/tweets/<%=tweet.id%>/delete/verify"><button class="button-primary_warning">Delete tweet</button></a>
     </div>
+    <%end%>
     </div>
 
 <% else%>

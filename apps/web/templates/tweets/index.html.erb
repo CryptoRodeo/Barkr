@@ -1,13 +1,8 @@
 <h2>All Tweets</h2>
 <h2>Got a 🦴 to pick? Tweet away!</h2>
+
 <%=
-
   form_for :tweet, '/tweets' do
-    div class: 'input' do
-      label :username
-      text_field :username, placeholder: 'Pawtrick 🐾'
-    end
-
 
     div class: 'input' do
       label :content
@@ -39,9 +34,9 @@
 
     <% tweets.each do |tweet| %>
     <div class="tweet">
-    <h3><%= tweet.username %></h3>
-    <p><%= tweet.content %><p>
+    <h4><%= tweet.content %></h4>
     <span><%= tweet.created_at %></span>
+    <p>Created by: <%= tweet.created_by%> </p>
     <span><a href="/tweets/<%= tweet.id %>"/>Read more </a></span>
     </div>
   <% end%>
