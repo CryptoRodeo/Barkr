@@ -6,7 +6,7 @@ RSpec.describe Web::Controllers::Tweets::Index, type: :action do
   before do
     repository.clear
 
-    @tweet = repository.create(username:'Fido', content: 'Scooby do is overrated')
+    @tweet = repository.create( content: 'Scooby do is overrated')
       puts "~~~~#{repository.class}"
     end
 
