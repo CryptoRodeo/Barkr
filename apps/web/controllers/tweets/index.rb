@@ -7,23 +7,31 @@ module Web
         require 'json'
        
         attr_accessor :ip, :tweets, :user
-        expose :tweets, :user
+        expose :tweets, :user, :ip
         
-        def initialize(tweets = TweetRepository.new.all)
-          @user_repo = UserRepository.new
-          @tweets ||= tweets
-          @user ||= {}
-        end
-
-        def ip_exists?
-          @user_repo.ip_exists?(@ip)
+        def initialize(user_repo: UserRepository.new, tweets:  TweetRepository.new.all)
+          @user_repo = user_repo
+          @tweets = tweets
         end
 
         def call(params)
-          @ip = params.env.fetch("REMOTE_ADDR")
-          @user_repo.create(ip: @ip) unless ip_exists?
-          @user = @user_repo.by_ip(@ip)
-          session[:user_id] = @user.id
+          @ip = request.ip.to_s
+         @user_repo.create(ip: @ip) unless ip_stored?(@ip)
+          set_session(user)
+        end
+
+        private
+
+        def ip_stored?(ip)
+          @user_repo.ip_exists?(ip)
+        end
+
+        def user
+          @user  = @user_repo.by_ip(@ip)
+        end
+
+        def set_session(user)
+          session[:user_id] = user.id
         end
       end
     end
