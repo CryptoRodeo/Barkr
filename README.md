@@ -44,5 +44,5 @@
 ## Back-end
 - [ ] Create an admin account
 - [x] Create user accounts based on ip address
-- [ ] Associate users to their posts
+- [x] Associate users to their posts
 - [ ] Implement a follow feature
