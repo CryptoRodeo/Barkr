@@ -10,6 +10,17 @@ module Web
           @tweet ||= tweet
         end
 
+        def call(params)
+          validate_inputs
+          if inputs_valid?
+            @created_by = session.fetch(:user_id)
+            create_tweet
+            redirect_to '/tweets'
+          else
+            self.status = 422 #set to 422, pass control to view.
+          end
+        end
+
         def validate_inputs
           # DRY validations for the form inputs.
           params do
@@ -25,17 +36,6 @@ module Web
 
         def inputs_valid?
           params.valid?
-        end
-
-        def call(params)
-          validate_inputs
-          if inputs_valid?
-            @created_by = session.fetch(:user_id)
-            create_tweet
-            redirect_to '/tweets'
-          else
-            self.status = 422 #set to 422, pass control to view.
-          end
         end
       end
     end

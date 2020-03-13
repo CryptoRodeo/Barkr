@@ -2,7 +2,7 @@ RSpec.describe Web::Controllers::Tweets::Create, type: :action do
   let(:action) { described_class.new }
   let(:params) { Hash[tweet: { username: 'Demo Doggo', content: 'Woof?'}] }
   let(:repository) {TweetRepository.new}
-
+  let(:ip) {  "127.0.0.1" }
   before do
     repository.clear
   end
