@@ -1,14 +1,17 @@
 RSpec.describe Web::Controllers::Tweets::Create, type: :action do
   let(:action) { described_class.new }
-  let(:params) { Hash[tweet: { username: 'Demo Doggo', content: 'Woof?'}] }
+  let(:params) { Hash['rack.session' => session, tweet: { created_by: session[:user_id], content: 'Woof?'}] }
   let(:repository) {TweetRepository.new}
-  let(:ip) {  "127.0.0.1" }
+  let(:user_repo) {UserRepository.new}
+  let(:user) {UserRepository.new.by_ip('127.0.0.1')}
+  let(:user_id) { user.id }
+  let(:session) { { :user_id => user.id} }
+
+
   before do
     repository.clear
   end
-
   context 'with valid params' do
-    let(:params) { Hash[tweet: {username: 'Demo Doggo', content: 'Woof?'}] }
 
     it 'creates a tweet' do
       action.call(params)
@@ -18,7 +21,6 @@ RSpec.describe Web::Controllers::Tweets::Create, type: :action do
     end
 
   it 'redirects the user to the index tweet page' do
-    response = action.call(params)
     
     response = action.call(params)
     expect(response[0]).to eq(302)
@@ -32,14 +34,6 @@ end
     it 'returns HTTP client error' do
       response = action.call(params)
       expect(response[0]).to eq(422)
-    end
-
-    it 'dumps error in params' do
-      action.call(params)
-      errors = action.params.errors
-
-      expect(errors.dig(:tweet, :content)).to eq(['is missing'])
-      expect(errors.dig(:tweet,:username)).to eq(['is missing'])
     end
   end
 end

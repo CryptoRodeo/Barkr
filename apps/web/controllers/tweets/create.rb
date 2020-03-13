@@ -7,18 +7,18 @@ module Web
         expose :tweet, :created_by
         
         def initialize(tweet = TweetRepository.new)
-          @tweet ||= tweet
+          @tweet = tweet
         end
 
         def call(params)
           validate_inputs
           if inputs_valid?
-            @created_by = session.fetch(:user_id)
+            @created_by = session[:user_id]
             create_tweet
             redirect_to '/tweets'
-          else
-            self.status = 422 #set to 422, pass control to view.
           end
+          rescue
+          self.status = 422 #set to 422, pass control to view.
         end
 
         def validate_inputs
