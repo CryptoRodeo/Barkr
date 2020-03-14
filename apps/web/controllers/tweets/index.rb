@@ -3,22 +3,28 @@ module Web
     module Tweets
       class Index
         include Web::Action
-        require 'open-uri'
-        require 'json'
-       
-        attr_accessor :ip, :tweets, :user
-        expose :tweets, :user, :ip
         
-        def initialize(user_repo: UserRepository.new, tweets:  TweetRepository.new.all)
+        attr_accessor :ip, :tweets
+        
+        expose :tweets, :user, :ip
+
+        def initialize(user_repo: UserRepository.new, tweets: TweetRepository.new)
           @user_repo = user_repo
-          @tweets = tweets
+          @tweets = tweets.all
         end
+
 
         def call(params)
           @ip = request.ip.to_s
-         @user_repo.create(ip: @ip) unless ip_stored?(@ip)
+          @user_repo.create(ip: @ip) unless ip_stored?(@ip)
           set_session(user)
         end
+
+        params do
+          required(:tweet).schema do
+            required(:content).filled(:str?)
+          end
+        end  
 
         private
 
@@ -27,7 +33,7 @@ module Web
         end
 
         def user
-          @user  = @user_repo.by_ip(@ip)
+          @user = @user_repo.find_by_ip(@ip)
         end
 
         def set_session(user)

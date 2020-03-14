@@ -12,7 +12,7 @@ class UserRepository < Hanami::Repository
         users.where(ip: ip).exist?
     end 
 
-    def by_ip(ip)
+    def find_by_ip(ip)
         users.where(ip: ip).one
     end
 end

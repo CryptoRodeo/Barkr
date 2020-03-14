@@ -4,7 +4,7 @@ module Web
       class Create
         include Web::View
         #render this template
-        template 'tweets/new'
+        template 'tweets/index'
       end
     end
   end

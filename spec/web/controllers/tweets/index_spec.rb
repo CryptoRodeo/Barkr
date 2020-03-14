@@ -21,6 +21,8 @@ RSpec.describe Web::Controllers::Tweets::Index, type: :action do
 
   it 'can create a user based on their ip address' do
     @new_user = user_repository.create(ip: "168.0.23.1") 
+
+    expect(@new_user).to_not be_nil
   end
 
   it 'exposes all tweets' do

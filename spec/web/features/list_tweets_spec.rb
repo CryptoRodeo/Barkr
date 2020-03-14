@@ -2,11 +2,13 @@ require 'features_helper'
 
 RSpec.describe 'lists tweets' do
    let(:repository) {TweetRepository.new}
+   let(:user_repository) {UserRepository.new}
+   let(:user) {user_repository.find_by_ip('127.0.0.1')}
   before do
     repository.clear
 
-    repository.create(username: 'Doggo', content: 'Hungry for snacks...')
-    repository.create(username: 'Fido', content: 'Just found out im adopted!')
+    repository.create(created_by: user.id, content: 'Hungry for snacks...')
+    repository.create(created_by: user.id, content: 'Just found out im adopted!')
   end
 
   it 'Displays the tweets on the page' do

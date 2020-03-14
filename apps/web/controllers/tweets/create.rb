@@ -4,38 +4,23 @@ module Web
       class Create
         include Web::Action
        
-        expose :tweet, :created_by
+        expose :tweets, :created_by, :tweet
         
-        def initialize(tweet = TweetRepository.new)
-          @tweet ||= tweet
+        def initialize(tweets: TweetRepository.new)
+          @tweets = tweets
         end
 
-        def validate_inputs
-          # DRY validations for the form inputs.
-          params do
+         params do
             required(:tweet).schema do
               required(:content).filled(:str?)
             end
           end
-        end
-
-        def create_tweet
-          @tweet.create(created_by: @created_by,content: params[:tweet][:content])
-        end
-
-        def inputs_valid?
-          params.valid?
-        end
 
         def call(params)
-          validate_inputs
-          if inputs_valid?
-            @created_by = session.fetch(:user_id)
-            create_tweet
-            redirect_to '/tweets'
-          else
-            self.status = 422 #set to 422, pass control to view.
-          end
+          @tweets.create(created_by: session[:user_id],content: params[:tweet][:content]) unless params.valid?
+          redirect_to '/tweets?invalid_inputs'
+          rescue 
+           halt 422 
         end
       end
     end
