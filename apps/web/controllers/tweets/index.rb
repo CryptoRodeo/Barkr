@@ -7,7 +7,8 @@ module Web
         attr_accessor :ip, :tweets
         
         expose :tweets, :user, :ip
-        def initialize(user_repo: UserRepository.new, tweets:  TweetRepository.new)
+
+        def initialize(user_repo: UserRepository.new, tweets: TweetRepository.new)
           @user_repo = user_repo
           @tweets = tweets.all
         end
@@ -25,7 +26,7 @@ module Web
         end
 
         def user
-          @user = @user_repo.by_ip(@ip)
+          @user = @user_repo.find_by_ip(@ip)
         end
 
         def set_session(user)

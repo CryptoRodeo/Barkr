@@ -13,6 +13,8 @@ module Web
 
                 def call(params)
                     @updated_tweet = tweet_repo.find(params[:id])
+                rescue
+                    halt 500
                 end
             end
         end

@@ -3,7 +3,7 @@ RSpec.describe Web::Controllers::Tweets::Create, type: :action do
   let(:params) { Hash['rack.session' => session, tweet: { created_by: session[:user_id], content: 'Woof?'}] }
   let(:repository) {TweetRepository.new}
   let(:user_repo) {UserRepository.new}
-  let(:user) {UserRepository.new.by_ip('127.0.0.1')}
+  let(:user) {UserRepository.new.find_by_ip('127.0.0.1')}
   let(:user_id) { user.id }
   let(:session) { { :user_id => user.id} }
 
