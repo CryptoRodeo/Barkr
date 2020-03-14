@@ -6,7 +6,7 @@ module Web
        
         expose :tweets, :created_by, :tweet
         
-        def initialize(tweets:  TweetRepository.new)
+        def initialize(tweets: TweetRepository.new)
           @tweets = tweets
         end
 

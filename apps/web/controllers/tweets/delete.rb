@@ -6,8 +6,8 @@ module Web
 
                 attr_accessor :tweet_repo
 
-                def initialize(tweet_repo = TweetRepository.new)
-                    @tweet_repo ||= tweet_repo
+                def initialize(tweet_repo: TweetRepository.new)
+                    @tweet_repo = tweet_repo
                 end
 
                 def call(params)

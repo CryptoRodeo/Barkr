@@ -7,9 +7,8 @@ module Web
                 
                 attr_accessor :tweets, :api
 
-                def initialize(tweets = TweetRepository.new.all)
-                    @tweets ||= tweets
-                    @response = convert_tweets :to_h
+                def initialize(tweets: TweetRepository.new.all)
+                    @tweets = tweets
                 end
 
                 def api
@@ -21,6 +20,7 @@ module Web
                 end
 
                 def call(params)
+                    @response = convert_tweets.to_h
                     self.headers.merge!({'Access-Control-Allow_origin' => '*'})
                     self.body = api
                 end
