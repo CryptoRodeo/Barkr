@@ -13,11 +13,18 @@ module Web
           @tweets = tweets.all
         end
 
+
         def call(params)
           @ip = request.ip.to_s
           @user_repo.create(ip: @ip) unless ip_stored?(@ip)
           set_session(user)
         end
+
+        params do
+          required(:tweet).schema do
+            required(:content).filled(:str?)
+          end
+        end  
 
         private
 

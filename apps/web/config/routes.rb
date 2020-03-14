@@ -9,6 +9,7 @@
 root to: 'tweets#index'
 
 get '/tweets', to: 'tweets#index'
+get '/tweets?*', to: 'tweets#index'
 get '/tweets/:id', to: 'tweets#read'
 get '/tweets/:id/edit', to: 'tweets#edit'
 get '/tweets/:id/delete/verify', to: 'tweets#verify'

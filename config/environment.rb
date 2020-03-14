@@ -3,6 +3,7 @@ require 'hanami/setup'
 require 'hanami/model'
 require_relative '../lib/barkr'
 require_relative '../apps/web/application'
+require "hanami/middleware/body_parser"
 
 Hanami.configure do
   mount Web::Application, at: '/'
@@ -45,5 +46,7 @@ Hanami.configure do
     mailer do
       delivery :smtp, address: ENV.fetch('SMTP_HOST'), port: ENV.fetch('SMTP_PORT')
     end
+
+    middleware.use Hanami::Middleware::BodyParser, :json
   end
 end

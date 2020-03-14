@@ -17,8 +17,8 @@ module Web
           end
 
         def call(params)
-          @tweets.create(created_by: session[:user_id],content: params[:tweet][:content]) if params.valid?
-          redirect_to '/tweets'
+          @tweets.create(created_by: session[:user_id],content: params[:tweet][:content]) unless params.valid?
+          redirect_to '/tweets?invalid_inputs'
           rescue 
            halt 422 
         end

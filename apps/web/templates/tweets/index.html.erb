@@ -1,31 +1,19 @@
-<h2>All Tweets</h2>
-<h2>Got a 🦴 to pick? Tweet away!</h2>
-
 <%=
-  form_for :tweet, '/tweets' do
+  form_for :tweet,  '/tweets' do
 
     div class: 'input' do
       label :content
-      text_area :content, placeholder: "Remember, be nice!"
+      text_area :content, required: true, placeholder: "Remember, be nice!"
     end
 
     div class: 'controls' do
-      submit 'Send Bark 🐕', class: 'button-primary'
+      submit 'Send Bark 🐕', class: 'button-primary', name: 'button_pressed', value: 'true'
     end
   end
   
 %>
 
-<% unless params.valid? %>
-  <div class="errors">
-    <h3>There was a problem with your tweet</h3>
-    <ul>
-      <% params.error_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>    
-  </div>
-<% end %>
+
 
 <!--   <a href="/tweets/new">Tweet</a> -->
 <% if tweets.any? %>
@@ -41,8 +29,6 @@
     </div>
   <% end%>
   </div>
-<% else %>  
-  <p class='placeholder'>Be the first to tweet on Barkr!</p>
   <%end %>
 
 
