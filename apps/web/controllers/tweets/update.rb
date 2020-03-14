@@ -10,8 +10,7 @@ module Web
                 end
 
                 def call(params)
-                    tweet_repo.update(params[:id], content: params[:tweet_edited][:content])
-                    puts response
+                    tweet_repo.update(params[:id], content: params[:updated_tweet][:content])
                     redirect_to "/tweets/#{params[:id]}"
                 rescue
                     halt 500

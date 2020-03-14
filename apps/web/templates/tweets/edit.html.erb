@@ -2,7 +2,8 @@
 
 <%= 
 
-    form_for :tweet_edited, "/tweets/#{tweet_edited.id}", method: :patch, values: {tweet_edited: tweet_edited} do 
+    form_for :updated_tweet, "/tweets/#{updated_tweet.id}", method: :patch, values: {updated_tweet: updated_tweet} do 
+    
             
             div class: 'input' do
                 label :content
