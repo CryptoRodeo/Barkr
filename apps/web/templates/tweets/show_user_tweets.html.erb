@@ -1,1 +1,15 @@
 <h1>User Tweets</h1>
+<h4>tweets by: <%=user.fetch(:id)%></h4>
+
+<% if user_tweets.any? %>
+<div id="tweets">
+
+<% user_tweets.each do |tweet| %>
+    <div class="tweet">
+    <h4><%= tweet.content %></h4>
+    <span><%= tweet.created_at %></span>
+    <span><a href="/tweets/<%= tweet.id %>"/>Read more </a></span>
+    </div>
+  <% end%>
+  </div>
+  <%end %>

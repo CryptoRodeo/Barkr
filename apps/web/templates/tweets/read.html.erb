@@ -2,7 +2,7 @@
 
 <div class="tweet">
     <h4><%= tweet.content %></h4>
-    <p>Created by: <%= tweet.created_by%></p>
+   <p>Created by: <a href="/tweets/user/<%= tweet.created_by%>/tweets"><%= tweet.created_by%></a></p> 
     <span>Created at: <%= tweet.created_at %></span>
     <%if session.fetch(:user_id) == tweet.created_by %>
     <div class="controls">

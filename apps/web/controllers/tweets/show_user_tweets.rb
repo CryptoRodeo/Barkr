@@ -4,8 +4,15 @@ module Web
       class ShowUserTweets
         include Web::Action
 
-        def call(params)
+        expose :user, :user_tweets
+        def initialize(user_repo: UserRepository.new)
+          @user_repo = user_repo
+        end
 
+        def call(params)
+          @user = @user_repo.find_with_tweets(params[:user_id])
+#          @user_tweets = Hash(@user).fetch(:tweets)
+            @user_tweets = @user.fetch(:tweets)
         end
       end
     end

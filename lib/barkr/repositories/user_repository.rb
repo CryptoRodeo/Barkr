@@ -8,6 +8,10 @@ class UserRepository < Hanami::Repository
         aggregate(:tweets).where(id: id).map_to(User).one
      end
 
+     def find_by_id(id)
+        users.where(id: id).one
+     end
+
     def ip_exists?(ip)
         users.where(ip: ip).exist?
     end 
