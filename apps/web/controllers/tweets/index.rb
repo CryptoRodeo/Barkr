@@ -18,6 +18,10 @@ module Web
           @ip = request.ip.to_s
           @user_repo.create(ip: @ip) unless ip_stored?(@ip)
           set_session(user)
+         user_tweets =  @user_repo.find_with_tweets(session[:user_id]).to_h
+        user_tweets[:tweets].each do |tweet|
+          puts Hash(tweet).fetch(:content)
+        end
         end
 
         params do

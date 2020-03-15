@@ -19,3 +19,4 @@ patch '/tweets/:id', to: 'tweets#update'
 delete '/tweets/:id', to: 'tweets#delete'
 
 get 'barkr/tweets/api', to: 'tweets#api'
+get '/tweets/user/:user_id/tweets', to: 'tweets#show_user_tweets'
