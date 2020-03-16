@@ -15,7 +15,7 @@ module Web
 
 
         def call(params)
-          @ip = request.ip.to_s
+          @ip = String(request.ip)
           @user_repo.create(ip: @ip) unless ip_stored?(@ip)
           set_session(user)
         end
@@ -33,7 +33,7 @@ module Web
         end
 
         def user
-          @user = @user_repo.find_by_ip(@ip)
+          @user_repo.find_by_ip(@ip)
         end
 
         def set_session(user)
