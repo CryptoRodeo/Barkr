@@ -1,30 +1,34 @@
+<div id="form-container">
+
+<h1>Create a tweet!</h1>
+<h4>( No signup required! )</h4>
 <%=
   form_for :tweet,  '/tweets' do
-
+    
     div class: 'input' do
-      label :content
       text_area :content, required: true, placeholder: "Remember, be nice!"
     end
 
     div class: 'controls' do
-      submit 'Send Bark 🐕', class: 'button-primary', name: 'button_pressed', value: 'true'
+      submit 'Send Tweet', class: 'button-primary', name: 'button_pressed', value: 'true'
     end
   end
   
 %>
+</div>
 
 
 
 <!--   <a href="/tweets/new">Tweet</a> -->
 <% if tweets.any? %>
-
+<h1 id="new-tweets">Newest Tweets 🐕</h1>
 <div id="tweets">
 
     <% tweets.each do |tweet| %>
     <div class="tweet">
-    <h4><%= tweet.content %></h4>
+    <h4><a href="/tweets/user/<%= tweet.user_id%>/tweets">@<%= tweet.user_id%></a></h4>
+    <p><%= tweet.content %></p>
     <span><%= tweet.created_at %></span>
-    <p>Created by: <a href="/tweets/user/<%= tweet.user_id%>/tweets"><%= tweet.user_id%></a></p>
     <span><a href="/tweets/<%= tweet.id %>"/>Read more </a></span>
     </div>
   <% end%>

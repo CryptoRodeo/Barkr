@@ -1,5 +1,5 @@
-<h1>User Tweets</h1>
-<h4>tweets by: <%=user.fetch(:id)%></h4>
+<h1>User</h1>
+<h4><%=user.fetch(:id)%></h4>
 
 <% if user_tweets.any? %>
 <div id="tweets">
@@ -8,7 +8,12 @@
     <div class="tweet">
     <h4><%= tweet.content %></h4>
     <span><%= tweet.created_at %></span>
-    <span><a href="/tweets/<%= tweet.id %>"/>Read more </a></span>
+    <%if session.fetch(:user_id) == tweet.user_id %>
+      <div class="controls">
+        <a href="/tweets/<%=tweet.id%>/edit"><button class="button-primary_edit">Edit tweet</button></a>
+        <a href="/tweets/<%=tweet.id%>/delete/verify"><button class="button-primary_warning">Delete tweet</button></a>
+      </div>
+    <%end%>
     </div>
   <% end%>
   </div>

@@ -1,39 +1,90 @@
-body
+*
 {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
+    box-sizing: border-box;
+}
+   body
+{
+    padding: 0;
+    position: relative;
+    margin: 0;
     text-align: center;
-    padding: 20px;
-    align-items: center;
+}
+
+div#main-container
+{
+    min-height: 100vh;
+    position: relative;
+}
+
+div#content-wrapper
+{
+    padding-bottom: 50px;
+}
+
+nav
+{
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    background-color: #212121;
+    color: #fff;
+    height: 65px;
+}
+nav h3, nav a
+{
+    text-align: left;
+    line-height: 65px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+h1#new-tweets
+{
+    border-bottom: solid 1px #bdbdbd;
+    margin-bottom: 50px;
+
 }
 
 div#tweets
 {
     width: 100%;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
+    padding-top: 50px;
     align-items: center;
-   
+    box-sizing: border-box;
 }
 
 div.tweet
 {
     text-align: left;
-    border: solid 1px  #bdbdbd;
+    border-bottom: solid 1px  #bdbdbd;
     border-radius: 10px;
     padding: 10px;
     box-sizing: border-box;
     display: inline-block;
-    width: 40%;
+    width: 100%;
     margin-bottom: 20px;
+}
+
+div.tweet p
+{
+    font-size: 36px;
+}
+
+div#form-container
+{
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 70px 0; 
+
 }
 
 form
 {
-    width: 33%;
     padding: 15px;
     text-align: left;
 }
@@ -45,7 +96,10 @@ form input
 
 form textarea
 {
-    width: 100%
+    position: relative;
+    min-width: 475px;
+    height: 150px;
+    border-radius: 5px;
     
 }
 
@@ -59,4 +113,13 @@ form textarea
 {
     background-color: #00C851;
     color: #FFF;
+}
+
+footer
+{
+    width: 100%;
+    background-color: #212121;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
 }

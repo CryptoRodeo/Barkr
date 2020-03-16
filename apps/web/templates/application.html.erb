@@ -8,7 +8,14 @@
     <%= stylesheet 'layout' %>
   </head>
   <body>
-    <h1>Barkr - Twitter for dogs 🐶</h1>
+  <div id="main-container">
+  <div id="content-wrapper">
+    <nav>
+      <h3><a href="/tweets">Barkr - Twitter for dogs 🐶</a></h3>
+    </nav>
     <%= yield %>
+    </div> <!-- content wrapper -->
+    <footer></footer>
+    </div>
   </body>
 </html>
