@@ -8,9 +8,9 @@ module Web
         
         expose :tweets, :user, :ip
 
-        def initialize(user_repo: UserRepository.new, tweets: TweetRepository.new)
+        def initialize(user_repo: UserRepository.new, tweets: TweetRepository.new.all)
           @user_repo = user_repo
-          @tweets = tweets.all
+          @tweets = tweets
         end
 
 

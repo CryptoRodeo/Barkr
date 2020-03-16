@@ -14,7 +14,7 @@ module Web
                 def call(params)
                     @tweet = tweet_repo.find(params[:id])
                 rescue
-                    halt 500
+                    halt 404
                 end
             end
         end
