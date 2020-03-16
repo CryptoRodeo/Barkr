@@ -46,5 +46,5 @@
 - [x] Create user accounts based on ip address
 - [x] Associate users to their posts
 - [ ] Implement a follow feature
--
-## Check it out (Warning: its hosted on heroku, so the performance takes a hit): https://morning-tor-16118.herokuapp.com/tweets/
+
+## Check it out (Warning: its hosted on heroku, so performance takes a hit): https://morning-tor-16118.herokuapp.com/tweets/
