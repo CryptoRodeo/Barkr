@@ -50,7 +50,6 @@ h1#new-tweets
 div#tweets
 {
     width: 100%;
-    padding-top: 50px;
     align-items: center;
     box-sizing: border-box;
 }
