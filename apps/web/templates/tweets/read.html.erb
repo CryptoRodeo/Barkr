@@ -1,8 +1,8 @@
 <% unless tweet.nil? %>
 
-<div class="tweet">
-    <h4><%= tweet.content %></h4>
-   <p>Created by: <a href="/tweets/user/<%= tweet.user_id%>/tweets"><%= tweet.user_id%></a></p> 
+<div class="tweet being-read">
+    <p><a href="/tweets/user/<%= tweet.user_id%>/tweets">@<%= tweet.user_id%></a></p> 
+    <h3><%= tweet.content %></h3>
     <span>Created at: <%= tweet.created_at %></span>
     <%if session.fetch(:user_id) == tweet.user_id %>
     <div class="controls">
