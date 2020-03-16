@@ -4,7 +4,7 @@ module Web
       class Create
         include Web::Action
        
-        expose :tweets, :created_by, :tweet
+        expose :tweets, :user_id, :tweet
         
         def initialize(tweets: TweetRepository.new)
           @tweets = tweets
@@ -17,7 +17,7 @@ module Web
           end
 
         def call(params)
-          @tweets.create(created_by: session[:user_id],content: params[:tweet][:content]) unless params.valid?
+          @tweets.create(user_id: session[:user_id],content: params[:tweet][:content]) unless params.valid?
           redirect_to '/tweets?invalid_inputs'
           rescue 
            halt 422 

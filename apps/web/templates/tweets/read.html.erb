@@ -2,9 +2,9 @@
 
 <div class="tweet">
     <h4><%= tweet.content %></h4>
-   <p>Created by: <a href="/tweets/user/<%= tweet.created_by%>/tweets"><%= tweet.created_by%></a></p> 
+   <p>Created by: <a href="/tweets/user/<%= tweet.user_id%>/tweets"><%= tweet.user_id%></a></p> 
     <span>Created at: <%= tweet.created_at %></span>
-    <%if session.fetch(:user_id) == tweet.created_by %>
+    <%if session.fetch(:user_id) == tweet.user_id %>
     <div class="controls">
         <a href="/tweets/<%=tweet.id%>/edit"><button class="button-primary_edit">Edit tweet</button></a>
         <a href="/tweets/<%=tweet.id%>/delete/verify"><button class="button-primary_warning">Delete tweet</button></a>

@@ -7,8 +7,8 @@ RSpec.describe 'lists tweets' do
   before do
     repository.clear
 
-    repository.create(created_by: user.id, content: 'Hungry for snacks...')
-    repository.create(created_by: user.id, content: 'Just found out im adopted!')
+    repository.create(user_id: user.id, content: 'Hungry for snacks...')
+    repository.create(user_id: user.id, content: 'Just found out im adopted!')
   end
 
   it 'Displays the tweets on the page' do

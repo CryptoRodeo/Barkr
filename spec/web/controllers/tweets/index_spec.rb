@@ -11,7 +11,7 @@ RSpec.describe Web::Controllers::Tweets::Index, type: :action do
     user_repository.clear
 
     @new_user = user_repository.create(ip: ip)
-    @new_tweet = tweet_repository.create(created_by: @new_user.id, content: "Hello")
+    @new_tweet = tweet_repository.create(user_id: @new_user.id, content: "Hello")
   end
 
   it 'is successful' do

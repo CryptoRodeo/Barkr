@@ -11,8 +11,7 @@ module Web
 
         def call(params)
           @user = @user_repo.find_with_tweets(params[:user_id])
-#          @user_tweets = Hash(@user).fetch(:tweets)
-            @user_tweets = @user.fetch(:tweets)
+          @user_tweets = @user.fetch(:tweets)
         end
       end
     end

@@ -3,7 +3,7 @@ RSpec.describe Web::Controllers::Tweets::Update, type: :action do
   let(:tweet_repo) { TweetRepository.new }
   let(:user_repo) { UserRepository.new }
   let(:test_user) {user_repo.find_by_ip('127.0.0.1')}
-  let(:original_tweet) { tweet_repo.create(created_by: test_user.id, content: 'testing!')}
+  let(:original_tweet) { tweet_repo.create(user_id: test_user.id, content: 'testing!')}
   let(:params) { Hash[ id: original_tweet.id, tweet: original_tweet ] }
   let(:edited_tweet) { {:id => original_tweet.id, :content => "New Content" } }
   
